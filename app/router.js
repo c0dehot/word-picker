@@ -1,12 +1,16 @@
 // const orm = require('./orm');
+const wordlist = require( './wordlist.json' )
+
 
 function router( app ){
     app.get('/api/words', async function(req, res) {
         console.log( '[GET] getting word')
         // const list = await orm.getDogList()
-        const list = [ "word1" ][0]
+        const words = Object.keys(wordlist)
+        const wordPick = Math.floor( words.length*Math.random() )
+        const word = words[wordPick]
         //! TODO add the orm method for getting a word
-        res.send( list )
+        res.send( { status: true, word } )
     })
 
     app.post( '/api/words', async function( req, res ){
