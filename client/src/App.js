@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Our word page
+          Our word page TEST 123
         </p>
       </header>
     </div>
