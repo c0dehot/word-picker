@@ -1,5 +1,5 @@
 // const orm = require('./orm');
-const wordlist = require( './wordlist.json' )
+let wordlist = require( './wordlist.json' )
 
 
 function router( app ){
@@ -16,14 +16,17 @@ function router( app ){
     app.post( '/api/words', async function( req, res ){
         console.log( '[POST /api/words] req.body: ', req.body )
 
+        const newWord = req.body.newWord
+        wordlist[newWord] = { type: "noun" }
+
+        console.log( `all the words are: `, wordlist[newWord] )
         // const saveResult = await orm.saveDog( dogData )
         const saveResult = { _id: true }
-        console.log( '[POST /api/dogs] saveResult: ', saveResult )
 
         if( saveResult._id ){
-            res.send( { status: true, message: 'Dog saved' } )
+            res.send( { status: true, message: 'Word saved' } )
         } else {
-            res.send( { status: false, message: 'Someting went wong' } )
+            res.send( { status: false, message: 'Something went wong' } )
         }
 
     })
